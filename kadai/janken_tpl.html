@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="./js/timer.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+<main style="display: none;">
+  <div class="janken__container">
+    <h1>じゃんけんアプリ</h1>
+    <form name="timer" class="timer">
+      <p>タイマー</p>
+      <input type="text" value=""><p>分</p>      
+      <input type="text" value=""><p>秒</p>
+      <input type="button" value="スタート" onclick="cntStart()">
+      <input type="button" value="ストップ" onclick="cntStop()">
+      <input type="button" value="リセット" onclick="reSet()">
+    </form>
+    <div class="point_wrap">
+      <div class="player">
+        <p>あなたの手を選択してください</p>
+        <div id="point_p" class="point_p"></div>
+      </div>
+      <div class="compter">
+        <p>コンピュータの出した手は？</p>
+        <div id="point_c" class="poiint_c"></div>
+      </div>
+    </div>
+    <div class="janken__image">
+      <ul>
+        <li class="my_hands" id="gu_btn"><img src="./img/gu.png" alt=""></li>
+        <li class="my_hands" id="cho_btn"><img src="./img/cho.png" alt=""></li>
+        <li class="my_hands" id="par_btn"><img src="./img/par.png" alt=""></li>
+      </ul>
+        <div id="pc_hands" class="pc_hands"></div>
+    </div>
+      <p>結果は？</p>
+      <div id="judgement" class="judgement"></div>
+      <p>~BGM~</p>
+      <div class="audio">
+        <audio controls loop>
+          <source src="./1.mp3" type="audio/mp3">
+        </audio>
+        <audio controls loop>
+          <source src="./2.mp3" type="audio/mp3">
+        </audio>
+        <audio controls loop>
+          <source src="./3.mp3" type="audio/mp3">
+        </audio>
+        <audio controls loop>
+          <source src="./4.mp3" type="audio/mp3">
+        </audio>
+        <audio controls loop>
+          <source src="./5.mp3" type="audio/mp3">
+        </audio>
+      </div>
+  </div>
+</main>
+
+<script>
+  $("main").fadeIn(1500);
+  //じゃんけん用のSCRIPTを書いてください
+let janken = [
+  '<img src="./img/gu.png">',
+  '<img src="./img/cho.png">',
+  '<img src="./img/par.png">',
+]; //変数jankenに["グー"0:,"チョキ"1:."パー":2]を代入。
+// ポイント用変数宣言
+let point_p = "";
+let point_c = "";
+
+//liタグのどれかが押された時に以下を実行
+$("li").on("click", function () {
+  let janken_r = Math.ceil(Math.random() * janken.length) - 1; //ランダム関数から1、2、3を形成し-1をする。よってランダムに出力される数字は0、1、2となる。
+  //id=pc_handsを参照してランダムで生成された配列番号のじゃんけん結果を表示
+  $("#pc_hands").html(janken[janken_r]);
+
+  console.log(janken[janken_r]); //pc_handsの結果確認用
+
+  let n = $("li.my_hands").index(this);
+
+  console.log(n); //どのボタンを押したかの結果確認用("グー"0:,"チョキ"1:."パー":2)
+  if ((janken_r - n + 3) % 3 == 0) {
+    // あいこの場合
+    $("#judgement").html('<img src="./img/draw.png" alt="あいこ">');
+  } else if ((janken_r - n + 3) % 3 == 1) {
+    // 勝ちの場合
+    // 例えば、グーを押した場合、n=0,グーで勝つ条件はチョキjanken_r=1となる。
+    // よって(1-0+3)%3となり、余り1となる。
+    $("#judgement").html('<img src="./img/win.png" alt="勝ち ">');
+    point_p++;
+    $("#point_p").html(point_p + " " + "point");
+    point_c--;
+    $("#point_c").html(point_c + " " + "point");
+  } else {
+    // 負けの場合
+    $("#judgement").html('<img src="./img/lose.png" alt="負け">');
+    point_p--;
+    $("#point_p").html(point_p + " " + "point");
+    point_c++;
+    $("#point_c").html(point_c + " " + "point");
+  }
+});
+
+</script>
+<footer></footer>
+</body>
+</html>

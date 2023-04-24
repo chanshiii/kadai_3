@@ -1,0 +1,130 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+}
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+main{
+    border-bottom:1px solid #ccc;
+}
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+
+.janken__container {
+    max-width: 1080px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #C5E99B;
+}
+
+h1 {
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 0 0;
+    margin: 40px 0 0;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 0;
+    height: 42px;
+}
+
+.timer>p {
+    font-size: 18px;
+    margin: 0;
+    padding: 7px 10px 0 0;
+}
+
+input{
+    font-size: 20px;
+    padding: 10px;
+}
+
+.text{
+    font-size:20px;
+    text-align: center;
+    justify-content: space-around;
+    padding: 30px 0 20px;
+    height:30px;
+    display: flex;
+}
+
+.point_wrap {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #EFEFEF;
+}
+
+p {
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin: 20px;
+}
+
+.janken__image {
+    display: flex;
+}
+
+ul{
+    margin: 0;
+    border: 1px solid #8cd790;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    display: flex;
+    justify-content: space-around;
+    background-color: #8CD790;
+    width:50%;
+}
+
+.my_hands{
+    margin: 0 40px 0 0;
+    text-align: center;
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color:  #757575;
+    /* display:table-cell;  定義 */
+    cursor: pointer;
+}
+
+li:hover{
+    background: #0066CC;
+    color:#fff;
+}
+
+.pc_hands {
+    padding: 10px;
+    border: 1px solid #757575;
+    display:table;  /* 定義 */
+    width:50%;
+    background-color: #757575;
+}
+
+.judgement {
+    margin: 10px 0;
+    background-color: #77AF9C;
+}
+
+.audio {
+    display: flex;
+    justify-content: space-around;
+    width: 1000px;
+}
